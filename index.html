@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IUD Juego Yahtzee</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Ventana Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Bienvenidos al juego de Yahtzee</h2>
+            <p>Para conocer las instrucciones completas del juego, visita el siguiente enlace: 
+                <a href="https://www.google.com/search?q=como+jugar+yahtzee&oq=como+jugar+yah&gs_lcrp=EgZjaHJvbWUqBwgBEAAYgAQyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIICAMQABgWGB4yCAgEEAAYFhgeMgoIBRAAGA8YFhgeMgoIBhAAGIAEGKIEMgoIBxAAGIAEGKIEMgoICBAAGIAEGKIEMgoICRAAGIAEGKIE0gEINjQ3MmowajeoAgiwAgE&sourceid=chrome&ie=UTF-8#fpstate=ive&vld=cid:cfa06b4d,vid:l0m2g_l60BM,st:0" target="_blank">Cómo jugar Yahtzee</a>.
+            </p>
+            <p><p>Después de lanzar los dados, sigue estos pasos:</p>
+            <ol>
+                <li><strong>Lanza los Dados:</strong> Tira los dados haciendo clic en el botón de lanzamiento.</li>
+                <li><strong>Evalúa tus Opciones:</strong> Si te gusta el resultado antes de los tres lanzamientos permitidos, ve a la tabla de puntuación.</li>
+                <li><strong>Selecciona la Puntuación:</strong> Haz clic en la categoría deseada en la tabla para registrar tus puntos.</li>
+                <li><strong>Registra y Cambia de Turno:</strong> La puntuación se marcará en rojo y el turno pasará al siguiente jugador.</li>
+            </ol>
+            </p>
+            <button id="enterGame">Entrar al juego</button>
+        </div>
+    </div>
+
+    <header>
+        <h1>Actividad 1: Simulación</h1>
+        <p><strong>Integrantes:</strong> Jesús Manuel Segura - Eduin Echeverry Hurtado</p>
+        <p><strong>Grupo:</strong> PREICA2401B020088</p>
+        <p><strong>Docente:</strong> Diego León Zapata</p>
+        <p><strong>Curso:</strong> Simulación</p>
+    </header>
+
+    <!-- Contenedor del juego -->
+    <div id="gameContainer">
+        <!-- Tablero de juego -->
+        <div id="board">
+            <div class="dado-container" id="player2Container"></div>
+            <div id="playArea">
+                <div id="endGameMessage"></div>
+                <button id="lanzar" class="image-button">Lanzamiento</button>
+                <button id="finJuego" class="image-button">Fin del juego</button>
+            </div>
+            <div class="dado-container" id="player1Container">
+                <div class="dado" id="die1">
+                    <img src="imagenes/dado1.png" class="face">
+                </div>
+                <div class="dado" id="die2">
+                    <img src="imagenes/dado2.png" class="face">
+                </div>
+                <div class="dado" id="die3">
+                    <img src="imagenes/dado3.png" class="face">
+                </div>
+                <div class="dado" id="die4">
+                    <img src="imagenes/dado4.png" class="face">
+                </div>
+                <div class="dado" id="die5">
+                    <img src="imagenes/dado5.png" class="face">
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla de puntuación -->
+        <div id="scoreTable" class="table">
+            <div class="header">
+                <div class="header-cell"></div>
+                <div class="header-cell">Jugador 1</div>
+                <div class="header-cell">Jugador 2</div>
+            </div>
+            <div class="row">
+                <div class="cell">Unos</div>
+                <div class="cell" id="unos1" data-row="1" data-column="1"></div>
+                <div class="cell" id="unos2" data-row="1" data-column="2"></div>
+            </div>
+            <div class="row">
+                <div class="cell">Dos</div>
+                <div class="cell" id="doses1" data-row="2" data-column="1"></div>
+                <div class="cell" id="doses2" data-row="2" data-column="2"></div>
+            </div>
+            <div class="row">
+                <div class="cell">Tres</div>
+                <div class="cell" id="treses1" data-row="3" data-column="1"></div>
+                <div class="cell" id="treses2" data-row="3" data-column="2"></div>
+            </div>
+            <div class="row">
+                <div class="cell">Cuatros</div>
+                <div class="cell" id="cuatros1" data-row="4" data-column="1"></div>
+                <div class="cell" id="cuatros2" data-row="4" data-column="2"></div>
+            </div>
+            <div class="row">
+                <div class="cell">Cincos</div>
+                <div class="cell" id="cincos1" data-row="5" data-column="1"></div>
+                <div class="cell" id="cincos2" data-row="5" data-column="2"></div>
+            </div>
+            <div class="row">
+                <div class="cell">Seis</div>
+                <div class="cell" id="seises1" data-row="6" data-column="1"></div>
+                <div class="cell" id="seises2" data-row="6" data-column="2"></div>
+            </div>
+            <div class="row" id="sumCaption">
+                <div class="cell">Suma</div>
+                <div class="cell" id="suma1"></div>
+                <div class="cell" id="suma2"></div>
+            </div>
+            <div class="row" id="bonusCaption">
+                <div class="cell">Bonus</div>
+                <div class="cell" id="bonus1"></div>
+                <div class="cell" id="bonus2"></div>
+            </div>
+            <div class="row">
+                <div class="cell">Tres de un tipo</div>
+                <div class="cell" id="tresDeUnTipo1" data-row="7" data-column="1"></div>
+                <div class="cell" id="tresDeUnTipo2" data-row="7" data-column="2"></div>
+            </div>
+            <div class="row">
+                <div class="cell">Cuatro de un tipo</div>
+                <div class="cell" id="cuatroDeUnTipo1" data-row="8" data-column="1"></div>
+                <div class="cell" id="cuatroDeUnTipo2" data-row="8" data-column="2"></div>
+            </div>
+            <div class="row">
+                <div class="cell">Casa llena</div>
+                <div class="cell" id="casaLlena1" data-row="9" data-column="1"></div>
+                <div class="cell" id="casaLlena2" data-row="9" data-column="2"></div>
+            </div>
+            <div class="row">
+                <div class="cell">Pequeña escalera</div>
+                <div class="cell" id="pequenaEscalera1" data-row="10" data-column="1"></div>
+                <div class="cell" id="pequenaEscalera2" data-row="10" data-column="2"></div>
+            </div>
+            <div class="row">
+                <div class="cell">Escalera larga</div>
+                <div class="cell" id="escaleraLarga1" data-row="11" data-column="1"></div>
+                <div class="cell" id="escaleraLarga2" data-row="11" data-column="2"></div>
+            </div>
+            <div class="row">
+                <div class="cell">Oportunidad</div>
+                <div class="cell" id="oportunidad1" data-row="12" data-column="1"></div>
+                <div class="cell" id="oportunidad2" data-row="12" data-column="2"></div>
+            </div>
+            <div class="row">
+                <div class="cell">Yahtzee</div>
+                <div class="cell" id="yahtzee1" data-row="13" data-column="1"></div>
+                <div class="cell" id="yahtzee2" data-row="13" data-column="2"></div>
+            </div>
+            <div class="row">
+                <div class="cell" id="totalCaption">TOTAL PUNTOS</div>
+                <div class="cell" id="total1"></div>
+                <div class="cell" id="total2"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="javascript/main.js"></script>
+    <script>
+        // Manejo de la ventana modal
+        document.getElementById("enterGame").addEventListener("click", function() {
+            document.getElementById("modal").style.display = "none";
+        });
+
+        window.onload = function() {
+            document.getElementById("modal").style.display = "block";
+        };
+    </script>
+</body>
+</html>

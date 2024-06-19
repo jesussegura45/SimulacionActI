@@ -1,0 +1,299 @@
+/* Estilo general */
+html, body {
+  background-color: #e0e0e5;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal h2 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.modal p {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.modal a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.modal a:hover {
+  text-decoration: underline;
+}
+
+.modal button {
+  padding: 10px 20px;
+  background-color: #6a11cb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.modal button:hover {
+  background-color: #2575fc;
+}
+
+/* Encabezado */
+header {
+  text-align: center;
+  margin: 20px auto;
+  padding: 1px;
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  border-radius: 10px;
+  color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin: 0;
+  font-family: 'Georgia', serif;
+  letter-spacing: 2px;
+  border-bottom: 2px solid #ffffff;
+  padding-bottom: 10px;
+}
+
+header p {
+  font-size: 1rem;
+  margin: 1px 0;
+}
+
+header p strong {
+  font-weight: bold;
+}
+
+/* Contenedor del juego */
+#gameContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin-top: 10px;
+  align-content: center;
+  justify-content: center;
+}
+
+/* Tablero de juego */
+#board {
+  background-color: rgb(84, 84, 87);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 60%;
+  min-height: 80%;
+  margin: 10px;
+  border: 20px solid #ffffff;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+  background-blend-mode: darken;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Área de juego */
+#playArea {
+  min-height: 80%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Contenedores de dados */
+.dado-container {
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2%;
+  background: #5d5e5f;
+  margin-top: auto;
+}
+
+.dado {
+  max-width: 40px;
+  max-height: 40px;
+  border-radius: 10px;
+  transition: all 0.4s linear;
+  z-index: 1000;
+}
+
+.face {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: all 0.4s linear;
+}
+
+.face:hover {
+  transform: scale(1.1);
+}
+
+/* Mensaje de fin de juego */
+#endGameMessage {
+  align-self: center;
+  color: yellow;
+  font-size: 80px;
+  width: 100%;
+  text-align: center;
+  transform: translateX(5%);
+}
+
+/* Botones */
+.image-button {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  border: transparent;
+  align-self: flex-end;
+  color: whitesmoke;
+  font-weight: bold;
+  background-size: cover;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#lanzar {
+  background-image: url("../imagenes/button.png");
+}
+
+#finJuego {
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  margin-left: 1%;
+  margin-right: 1%;
+  background: #ffffff; 
+}
+
+#lanzar:hover, #finJuego:hover {
+  transform: scale(1.1);
+}
+
+/* Tabla de puntuación */
+.table {
+  display: table;
+  border-collapse: collapse;
+  width: 30%;
+  background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(255, 255, 255));
+  cursor: pointer;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  color: rgb(173, 173, 173);
+  font-family: "Times New Roman";
+  font-size: 16px;
+  margin: 30px;
+}
+
+.header {
+  display: table-header-group;
+  background-color: rgb(72, 73, 73);
+}
+
+.header-cell {
+  display: table-cell;
+  padding: 7px;
+  text-align: center;
+  width: 20%;
+  border-color: whitesmoke;
+  color: whitesmoke;
+  font-size: 12px;
+}
+
+.header-cell:first-child {
+  border-top-left-radius: 10px;
+}
+
+.header-cell:last-child {
+  border-top-right-radius: 10px;
+}
+
+.row {
+  display: table-row;
+}
+
+.row:last-child {
+  font-size: 18px;
+  font-weight: bold;
+  border-top: 2px solid rgb(0, 0, 0);
+}
+
+.cell {
+  display: table-cell;
+  border: 1px solid;
+  padding: 7px;
+  text-align: center;
+  width: 20%;
+  border-color: rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
+  font-size: 12px;
+}
+
+.cell:first-child {
+  width: 60%;
+  text-align: left;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+#totalCaption {
+  font-size: 18px;
+}
+
+#bonusCaption {
+  border-bottom: 2px solid rgb(0, 0, 0);
+}
+
+#sumCaption {
+  border-top: 2px solid rgb(0, 0, 0);
+}
+
+#bonusCaption > *, #sumCaption > * {
+  font-weight: bold;
+}
